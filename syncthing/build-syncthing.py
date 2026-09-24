@@ -501,7 +501,6 @@ for target in BUILD_TARGETS:
         'BUILD_USER': 'reproducible-build',
         'CGO_ENABLED': '1',
         'EXTRA_LDFLAGS': '-checklinkname=0',
-        'GOPATH': module_dir,
         'GO111MODULE': 'on',
         'SOURCE_DATE_EPOCH': '0',
         'STTRACE': '',
