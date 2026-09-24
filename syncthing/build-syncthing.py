@@ -153,10 +153,15 @@ def get_go_version(go_binary):
     try:
         result = subprocess.check_output([go_binary, 'version'], stderr=subprocess.STDOUT, timeout=10)
         # Parse "go version go1.25.0 linux/amd64" to "1.25.0"
+        # Some distros (e.g. Arch) append a build suffix like
+        # "go1.27.0-X:nodwarf5" to the version; strip anything past the
+        # bare major.minor.patch so those packages aren't mistaken for a
+        # version mismatch.
         version_line = result.decode().strip()
         parts = version_line.split()
         if len(parts) >= 3 and parts[2].startswith('go'):
-            return parts[2][2:]  # Remove "go" prefix
+            m = re.match(r'(\d+\.\d+\.\d+)', parts[2][2:])
+            return m.group(1) if m else None
         return None
     except:
         return None
