@@ -829,7 +829,7 @@ public class SyncthingService extends Service {
      * Exports the local config and keys to {@link Constants#EXPORT_PATH}.
      *
      * Test with Android Virtual Device using emulator.
-     * cls & adb shell su 0 "ls -a -l -R /data/data/${applicationId}/files; echo === SDCARD ===; ls -a -l -R /storage/emulated/0/backups/syncthing"
+     * cls & adb shell su --mount-master 0 "ls -a -l -R /data/data/${applicationId}/files; echo === SDCARD ===; ls -a -l -R /storage/emulated/0/backups/syncthing"
      *
      */
     public boolean exportConfig() {
@@ -953,7 +953,7 @@ public class SyncthingService extends Service {
      * Imports config and keys from {@link Constants#EXPORT_PATH}.
      *
      * Test with Android Virtual Device using emulator.
-     * cls & adb shell su 0 "ls -a -l -R /data/data/${applicationId}/files; echo === SDCARD ===; ls -a -l -R /storage/emulated/0/backups/syncthing"
+     * cls & adb shell su --mount-master 0 "ls -a -l -R /data/data/${applicationId}/files; echo === SDCARD ===; ls -a -l -R /storage/emulated/0/backups/syncthing"
      *
      * @return True if the import was successful, false otherwise (eg if files aren't found).
      */
