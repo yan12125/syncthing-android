@@ -286,7 +286,7 @@ public class Util {
         Process shellProc = null;
         DataOutputStream shellOut = null;
         try {
-            shellProc = Runtime.getRuntime().exec((useRoot) ? "su" : "sh");
+            shellProc = Runtime.getRuntime().exec((useRoot) ? "su --mount-master" : "sh");
             shellOut = new DataOutputStream(shellProc.getOutputStream());
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(shellOut));
             Log.d(TAG, "runShellCommand: " + cmd);
@@ -337,7 +337,7 @@ public class Util {
         Process shellProc = null;
         DataOutputStream shellOut = null;
         try {
-            shellProc = Runtime.getRuntime().exec((useRoot) ? "su" : "sh");
+            shellProc = Runtime.getRuntime().exec((useRoot) ? "su --mount-master" : "sh");
             shellOut = new DataOutputStream(shellProc.getOutputStream());
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(shellOut));
             Log.d(TAG, "runShellCommandGetOutput: " + cmd);

@@ -442,7 +442,7 @@ public class SyncthingRunnable implements Runnable {
         }
 
         if (mUseRoot) {
-            ProcessBuilder pb = new ProcessBuilder("su");
+            ProcessBuilder pb = new ProcessBuilder("su", "--mount-master");
             Process process = pb.start();
             // The su binary prohibits the inheritance of environment variables.
             // Even with --preserve-environment the environment gets messed up.
